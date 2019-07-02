@@ -3,7 +3,7 @@
 ArealGlide is a tool that simulates the glide of a single dislocation through a point-like obstacles distributed on the glide plane.
 
 As input it takes the location of the obstacles, as well as their respective breaking angles.
-It output the position of the dislocation at each step, and the final normalized critical resolved shear stress. 
+It outputs the position of the dislocation at each step, and the final normalized critical resolved shear stress. 
 
 ############################ COMPILATION ###############################
 
