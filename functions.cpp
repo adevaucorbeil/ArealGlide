@@ -559,7 +559,7 @@ int break_node(vector<segment> &dislocation, vector<obstacle> &obs, int segment1
       //Erase broken segments and add the segments_to_add to the dislocation list:
       if(segment1 == dislocation.size()-1)
 	{
-	  dislocation.erase(dislocation.end());
+	  dislocation.pop_back();
 	  dislocation.erase(dislocation.begin());
 	}
       else
@@ -676,7 +676,7 @@ int meet_node(vector<segment> &dislocation, vector<obstacle> &obs, int seg_meeti
 
 if (seg_meeting == dislocation.size()-1)
   {
-    dislocation.erase(dislocation.end());
+    dislocation.pop_back();
     dislocation.push_back(seg1);
     dislocation.push_back(seg2);
   }
