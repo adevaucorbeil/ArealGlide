@@ -49,16 +49,6 @@ int main(int argc, char * argv[])
   n_obs = obs.size();
   num_dens = 1/sqrt(n_obs);
 
-  // The three first points have to be on the buttom and perfectly aligned in order to start with a straight dislocation line:
-
-  obs[0].x=0.2;
-  obs[0].y=0;
-
-  obs[1].x=0.5;
-  obs[1].y=0;
-
-  obs[2].x=0.75;
-  obs[2].y=0;
 
   // cout << "Input file read" << endl;
 

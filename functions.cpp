@@ -19,26 +19,47 @@ void readinput(vector<obstacle> &obs, string input)
 
   double min_angle=M_PI;
 
+  // Add three obstacles onto which the dislocation is going to be pinned at the start:
+  // The three first points have to be on the buttom and perfectly aligned in order to
+  // start with a straight dislocation line:
+
+  obstacle dummy;
+  double x;
+  double y;
+  double angle;
+
+  dummy.x = 0.2;
+  dummy.y = 0;
+  dummy.angle = min_angle;
+  obs.push_back(dummy);
+
+  dummy.x = 0.5;
+  dummy.y = 0;
+  dummy.angle = min_angle;
+  obs.push_back(dummy);
+
+  dummy.x = 0.75;
+  dummy.y = 0;
+  dummy.angle = min_angle;
+  obs.push_back(dummy);
+
+  string line;
+
   if (inputFile.is_open())
     {
       while (1)
 	{
-	  string line;
 	  getline(inputFile,line);
 	  if (inputFile.good() == false) break;
 
 	  std::stringstream stream(line);
 
 	  // Get the obstacle coordinates from the line:
-	  double x;
-	  double y;
-	  double angle;
 
 	  stream >> x;
 	  stream >> y;
 	  stream >> angle;
 
-	  obstacle dummy;
 	  dummy.x=x;
 	  dummy.y=y;
 	  dummy.angle=angle;
@@ -58,7 +79,13 @@ void readinput(vector<obstacle> &obs, string input)
       // 	}
 
     }
-  else cout << "Unable to open the input file " << input.c_str() << endl; 
+  else cout << "Unable to open the input file " << input.c_str() << endl;
+
+  // Add one obstacle at the top to avoid premature end of the simulation:  
+  dummy.x = 0;
+  dummy.y = 0.99;
+  dummy.angle = M_PI;
+  obs.push_back(dummy);
 }
 
 double sweptarea(vector<segment> dislocation,vector<obstacle> obs)
@@ -686,6 +713,7 @@ if (seg_meeting == dislocation.size()-1)
      dislocation.insert(dislocation.begin()+seg_meeting,seg2);
      dislocation.insert(dislocation.begin()+seg_meeting,seg1);
    }
+ return 0;
 }
 
 double dotprod(double v[],double w[])
