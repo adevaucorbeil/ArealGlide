@@ -19,7 +19,14 @@ end
 fid = fopen([filename,'.xy0']);
 fid2 = fopen([filename,'.out']);
 
-i=0;
+x(1)=0.2;
+x(2)=0.5;
+x(3)=0.75;
+y(1)=0;
+y(2)=0;
+y(3)=0;
+
+i=3;
 while 1
     i = i+1;
     tline = fgetl(fid);
@@ -33,12 +40,6 @@ while 1
     end
 end
 
-x(1)=0.2;
-x(2)=0.5;
-x(3)=0.75;
-y(1)=0;
-y(2)=0;
-y(3)=0;
 
 i = 0;
 j = 0;
@@ -119,7 +120,7 @@ while 1
             ylabel('Maximum applied shear stress');
             hold on
             drawnow
-%           waitforbuttonpress
+            %waitforbuttonpress
             if dosave==1
                 num = num2str(i+1000000);
                 filenameimg = ['pics/',filename(find(filename == '/',1,'last')+1:end),'-',num(2:end),'.jpg'];
